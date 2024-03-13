@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
+// launch app
 @main
 struct MyAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView() // when app opens creates screen contentview
         }
     }
 }
