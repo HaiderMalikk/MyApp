@@ -9,34 +9,53 @@ import SwiftUI
 
 struct ContentView: View { // CONTENT view is what created the UI and displays it
     var body: some View {
-
-        ZStack{ // z stack for z axis like depth so black screen furtest back then ontop of the blac screen is our vstack
-            Color(.black)
-                .ignoresSafeArea()
-            VStack { // v stack can put things on top of each other
-                Link("Follow me on GitHub",
-                      destination: URL(string: "https://github.com/HaiderMalikk")!)
-                .padding(.vertical, 30)
-                // Image element using Image word
-                Image("table")
-                    .resizable()
-                    .padding(.bottom, 10.0)
-                    .frame(width: 350.0, height: 250.0)
-                    .cornerRadius(30)
-                Text("Ionizing Energy")
-                    .font(.body)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .padding(.vertical, 10.0)
-                Button("Print in console") {
-                    print("Hello World!")
-                }
+        VStack{
+            Text("CHEMISTRY")
+                .font(.title)
+                .fontWeight(.heavy)
+                
+        }
+        .frame(width: 300.0, height: 100.0)
+        .background(Rectangle().foregroundColor(.white))
+        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+        .cornerRadius(10)
+        .padding(.bottom, 90.0)
+        
+        
+        
+        VStack(alignment: .leading, spacing: 20.0){
+            Image("table")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+            
+            HStack{
+                Image(systemName: "star.fill")
+                    .foregroundColor(Color.red)
+                    .padding(.leading, 30.0)
+                
+                Text("Table of ionizing energy")
+                    .font(.title)
+                
             }
-            .padding() // padding on all 4 sides of vstack centers and aligns VStack
-            }
+            .padding(.leading, 5.0)
             
         }
+        
+        VStack(alignment: .leading) {
+            HStack(alignment: .center){
+                Text("NOTE:")
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 20.0)
+            }
+            Text("Some Elements Do Not Follow The Trend Shown By The Arrows.")
+                .padding(.horizontal, 20.0)
+        }
+        .padding(.top, 5.0)
+        .padding(.bottom, 50.0)
+            
+    }
         
         
 }
