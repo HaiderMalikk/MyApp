@@ -6,58 +6,75 @@
 //
 
 import SwiftUI
-
-struct ContentView: View { // CONTENT view is what created the UI and displays it
+struct ContentView: View {
+    // starting cards
+    @State var playerCard = "card7" // state as cannot assign value to self ie cannot change playercard is deal function use state
+    @State var cpuCard = "card4"
+    @State var playerScore = 0
+    @State var cpuScore = 0
+    
     var body: some View {
-        VStack{
-            Text("CHEMISTRY")
-                .font(.title)
-                .fontWeight(.heavy)
-                
-        }
-        .frame(width: 300.0, height: 100.0)
-        .background(Rectangle().foregroundColor(.white))
-        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-        .cornerRadius(10)
-        .padding(.bottom, 90.0)
-        
-        
-        
-        VStack(alignment: .leading, spacing: 20.0){
-            Image("table")
+        ZStack{
+            Image("background-plain")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-            
-            HStack{
-                Image(systemName: "star.fill")
-                    .foregroundColor(Color.red)
-                    .padding(.leading, 30.0)
-                
-                Text("Table of ionizing energy")
-                    .font(.title)
-                
+                .ignoresSafeArea()
+            VStack{
+                Spacer()
+                Image("logo")
+                Spacer()
+                HStack{
+                    Spacer()
+                    Image(playerCard)
+                    Spacer()
+                    Image(cpuCard)
+                    Spacer()
+                }
+                Spacer()
+                Button() {
+                    deal()
+                } label: {
+                    Image("button")
+                }
+                Spacer()
+                HStack{
+                    Spacer()
+                    VStack{
+                        Text("Player")
+                            .font(.headline)
+                            .padding(.bottom, 10)
+                        Text(String(playerScore))
+                            .font(.largeTitle)
+                    }
+                    Spacer()
+                    VStack{
+                        Text("CPU")
+                            .font(.headline)
+                            .padding(.bottom, 10)
+                        Text(String(cpuScore))
+                            .font(.largeTitle)
+                    }
+                    Spacer()
+                }
+                .foregroundColor(.white) // apply the color to the whole contianer insted of each vstack container or indivisual text elements as this effects everything in Hstack
+                Spacer()
             }
-            .padding(.leading, 5.0)
-            
         }
         
-        VStack(alignment: .leading) {
-            HStack(alignment: .center){
-                Text("NOTE:")
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 20.0)
-            }
-            Text("Some Elements Do Not Follow The Trend Shown By The Arrows.")
-                .padding(.horizontal, 20.0)
-        }
-        .padding(.top, 5.0)
-        .padding(.bottom, 50.0)
-            
     }
-        
-        
+
+    func deal(){
+        playerCard = "card" + String(Int.random(in: 2...14))
+        cpuCard = "card" + String(Int.random(in: 2...14))
+        if playerCard > cpuCard{
+            playerScore += 1
+        }
+        else if cpuCard > playerCard{
+            cpuScore += 1
+        }
+        else{
+            
+        }
+    }
 }
 
 // mark keywork makes a selection seetoolbar
